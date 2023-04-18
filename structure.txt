@@ -1,0 +1,821 @@
+env_output:
+{
+  0:{'terrain':,'camp':, 'entity':, 'va':, 'last_action':, 'reward':, 'done':, 'episode_return':, 'episode_step':},
+  ...
+  7:{'terrain':,'camp':, 'entity':, 'va':, 'last_action':, 'reward':, 'done':, 'episode_return':, 'episode_step':}
+}
+
+通过batch函数：env_output->env_output_batch
+env_output_batch:
+{
+  'terrain':[1,8,15,15],
+  'camp':[1,8,15,15],
+  'entity':[1,8,7,15,15],
+  'va':[1,8,5],
+}
+
+agent_output_batch:
+{
+  'policy_logits':[1,8,5],
+  'baseline':[1,8],
+  'action':[1,8],
+}
+
+通过unbatch函数，agent_output_batch->agent_output
+agent_output:
+{
+  0:{
+      'policy_logits':[1,5]
+      'baseline':[1],
+      'action':[1],
+
+  },
+  ...
+  7:
+}
+
+self._prev_raw_obs:
+{
+  0:{0:,1:,...,7:},
+  ...
+  15:{0:,1:,...,7:}
+}
+key=0的部分被选择作为observation返回
+
+
+action的结构：
+actions:
+{0: 1, 1: 4, 2: 1, 3: 1, 4: 1, 5: 3, 6: 4, 7: 0}
+
+目前环境的动作取值范围：
+env.action_space.n=5 
+
+decision的结构：
+{
+  1: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.M$ ve'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Dire ction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    4: {
+      <class'nmmo.io. action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.ac tion.Direction'>: 0
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    }
+  },
+  2: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move '>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direct ion'>: 2
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.ac tion.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.acti on.Direction'>: 3
+      }
+    }
+  },
+  3: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Directio n'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    }
+  },
+  4: {
+    0: {
+      <class'nmmo.io .action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.a ction.Direction'>: 1
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class' nmmo.io.action.Direction'>: 1
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    }
+  },
+  5: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direc tion'>: 0
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    2: {
+      <class'nmmo.io.a ction.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.act ion.Direction'>: 2
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    5: {
+      <class' nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nm mo.io.action.Direction'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    }
+  },
+  6: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Directi on'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    4: {
+      <class'nmmo.io.act ion.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.actio n.Direction'>: 1
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    7: {
+      <class'nm mo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    }
+  },
+  7: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction '>: 2
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    6: {
+      <class'nmmo.io.actio n.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action. Direction'>: 2
+      }
+    }
+  },
+  8: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'n mmo.io.action.Direction'>: 1
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    }
+  },
+  9: {
+    0: {
+      <class'nmmo.io.ac tion.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.acti on.Direction'>: 3
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    3: {
+      <class'n mmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmm o.io.action.Direction'>: 3
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    }
+  },
+  10: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Directi on'>: 2
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    2: {
+      <class'nmmo.io.act ion.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.actio n.Direction'>: 2
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    5: {
+      <class'nm mo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo .io.action.Direction'>: 2
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    }
+  },
+  11: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Directio n'>: 3
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    4: {
+      <class'nmmo.io.acti on.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action .Direction'>: 3
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      }
+    },
+    7: {
+      <class'nmm o.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    }
+  },
+  12: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction '>: 2
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.actio n.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action. Direction'>: 2
+      }
+    }
+  },
+  13: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmm o.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    1: {
+      <class'nmm o.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io. action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.ac tion.Direction'>: 3
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmmo.io.a ction.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    4: {
+      <class'nmmo.io.a ction.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action .Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.D irection'>: 3
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Tar get'>: 1
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmmo.io.action. Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action. Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style '>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    }
+  },
+  14: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.D irection'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Tar get'>: 1
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action. Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    2: {
+      <class'nmmo.io.action. Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style '>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Directi on'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack '>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    }
+  },
+  15: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 2
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    2: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 1
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 2
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'n mmo.io.action.Direction'>: 1
+      },
+      <class'nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmm o.io.action.Target'>: 2
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 1
+      },
+      <class' nmmo.io.action.Attack'>: {
+        <class'nmmo.io.action.Style'>: 1,
+        <class'nmmo.io.action.Target'>: 2
+      }
+    }
+  },
+  0: {
+    0: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    1: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    2: {
+      
+    },
+    3: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction '>: 3
+      }
+    },
+    4: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    5: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 3
+      }
+    },
+    6: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    },
+    7: {
+      <class'nmmo.io.action.Move'>: {
+        <class'nmmo.io.action.Direction'>: 0
+      }
+    }
+  }
+}
